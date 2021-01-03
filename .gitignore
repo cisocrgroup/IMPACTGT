@@ -1,0 +1,7 @@
+env/*
+model/*
+lib/*
+segmented/*
+gtfiles/*
+data/*
+pack/*
