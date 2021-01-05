@@ -42,8 +42,10 @@ deactivate
 # Align (needs calamari).
 source $bdir/../env/3/bin/activate
 $bdir/align.bash $odir \
-	$bdir/../model/calamari_models-1.0/fraktur_historical/[3-4].ckpt \
-	$bdir/../model/calamari_models-1.0/antiqua_historical/[3-4].ckpt
+	$bdir/../model/calamari_models-1.0/fraktur_historical/3.ckpt \
+	$bdir/../model/calamari_models-1.0/fraktur_historical/4.ckpt \
+	$bdir/../model/calamari_models-1.0/antiqua_historical/3.ckpt \
+	$bdir/../model/calamari_models-1.0/antiqua_historical/4.ckpt
 deactivate
 
 # cleanup
