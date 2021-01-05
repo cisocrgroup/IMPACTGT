@@ -20,7 +20,8 @@ env/3/bin/activate:
 
 # Install calamari into the virtual environment.
 env/3/bin/calamari-predict: env/3/bin/activate
-	source env/3/bin/activate && pip install --upgrade pip 'h5py<3' calamari_ocr && deactivate
+	source env/3/bin/activate && pip install --upgrade pip && deactivate
+	source env/3/bin/activate && pip install 'h5py<3' 'tensorflow>=2' calamari_ocr && deactivate
 
 # Download calamari models.
 model/calamari.zip:
