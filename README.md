@@ -1,4 +1,5 @@
-# Scripts for IMPACT ground-truth generation
+# IMPACTGT
+Scripts for IMPACT ground-truth generation.
 
 ## Setup
 Install `go`, make sure that you have both python2 and python3
