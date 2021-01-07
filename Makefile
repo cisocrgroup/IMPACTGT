@@ -8,8 +8,8 @@ env/2/bin/activate:
 
 # Install ocropus into the virtual environment.
 env/2/bin/ocropus-dewarp: env/2/bin/activate env/ocropy/setup.py
-	source env/2/bin/activate && pip install -r env/ocropy/requirements.txt && deactivate
-	source env/2/bin/activate && cd env/ocropy && python setup.py install && deactivate
+	. env/2/bin/activate && pip install -r env/ocropy/requirements.txt && deactivate
+	. env/2/bin/activate && cd env/ocropy && python setup.py install && deactivate
 
 # Checkout ocropus git repository.
 env/ocropy/setup.py:
@@ -20,8 +20,8 @@ env/3/bin/activate:
 
 # Install calamari into the virtual environment.
 env/3/bin/calamari-predict: env/3/bin/activate
-	source env/3/bin/activate && pip install --upgrade pip && deactivate
-	source env/3/bin/activate && pip install 'h5py<3' 'tensorflow>=2' calamari_ocr && deactivate
+	. env/3/bin/activate && pip install --upgrade pip && deactivate
+	. env/3/bin/activate && pip install 'h5py<3' 'tensorflow>=2' calamari_ocr && deactivate
 
 # Download calamari models.
 model/calamari.zip:
