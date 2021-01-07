@@ -7,6 +7,7 @@ and java installed. Install `segregs` and `seglines`:
  * `go get github.com/cisocrgroup/segregs`
  * `go get github.com/finkf/seglines`
  * Add `$HOME/go/bin` to your `PATH`
+ * Install python3-venv if you are on debian or ubuntu
 
 Use `make setup py2=my-python2 py3=my-python3` to setup the
 tools. This will
