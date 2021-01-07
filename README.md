@@ -3,7 +3,7 @@
 ## Setup
 Install `go`, make sure that you have both python2 and python3
 and java installed. Install `segregs` and `seglines`:
- * `go get github.com/finkf/segregs`
+ * `go get github.com/cisocrgroup/segregs`
  * `go get github.com/finkf/seglines`
  * Add `$HOME/go/bin` to your `PATH`
 
