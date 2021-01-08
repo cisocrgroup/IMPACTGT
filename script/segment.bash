@@ -47,7 +47,7 @@ for img in $bdir/*$imgext; do
     echo ln $img $odir/$base || cp $img $odir/$base
     ln $img $odir/$base || cp $img $odir/$base
     echo ln $xml $odir/${base%$imgext}.xml || cp $xml $odir/${base%$imgext}.xml
-    ln $xml $odir/${base%.sau.png}.xml || cp $xml $odir/${base%.sau.png}.xml
+    ln $xml $odir/${base%$imgext}.xml || cp $xml $odir/${base%$imgext}.xml
     echo segregs -padding 10 $xml $img $odir/${base%$imgext}
     segregs -padding 10 $xml $img $odir/${base%$imgext}
 done
