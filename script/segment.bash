@@ -54,10 +54,10 @@ done
 
 # Segment the regions into lines.
 for json in $odir/*.json; do
-    echo ocropus-nlbin -n ${json/%.json/.png}
-    ocropus-nlbin -n -Q 4 ${json/%.json/.png}
-    echo ocropus-gpageseg -n ${json/%.json/.bin.png}
-    ocropus-gpageseg -n -Q 4 ${json/%.json/.bin.png}
-    echo seglines $json
-    seglines $json
+    echo ocropus-nlbin -n -Q4  ${json/%.json/.png}
+    ocropus-nlbin -n -Q4 ${json/%.json/.png}
+    echo ocropus-gpageseg -n --maxcolseps 0 -Q4 ${json/%.json/.bin.png}
+    ocropus-gpageseg -n --maxcolseps 0 -Q 4 ${json/%.json/.bin.png}
+#   echo seglines $json
+#   seglines $json
 done
