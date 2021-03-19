@@ -15,5 +15,5 @@ echo find $dir -type f -name '*.bin.png' "|" xargs calamari-predict -j 4 --check
 find $dir -type f -name '*.bin.png' | xargs calamari-predict -j 4 --checkpoint $models --files
 
 # align
-echo java -Dfile.encoding=UTF8 -jar "$bdir/../lib/align_gt_ocr.jar" -f $dir
-java -Dfile.encoding=UTF8 -jar "$bdir/../lib/align_gt_ocr.jar" -f $dir
+echo alignes $dir/*.json
+alignes $dir/*.json
