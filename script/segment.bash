@@ -33,16 +33,15 @@ rm -rf $odir
 mkdir -p $odir
 
 # # Binarize the images.
-# echo $dobin
 # if [[ $dobin == true ]]; then
 #     for tif in $bdir/*.tif; do
 # 	ocropus-nlbin $tif
 #     done
 # fi
 
-# Copy the image files and their segments.
-for img in $bdir/*$imgext; do
-    xml=${img%$imgext}.xml
+# Copy the xml and image files.
+for xml in $bdir/*.xml; do
+    img=${xml%.xml}$imgext
     base=$(basename $img)
     echo ln $img $odir/$base || cp $img $odir/$base
     ln $img $odir/$base || cp $img $odir/$base
