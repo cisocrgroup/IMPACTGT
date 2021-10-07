@@ -26,7 +26,7 @@ elif [[ $# == 2 ]]; then
      idir=$1
      odir=$2
 else
-	echo "usage: $0 [-nobin|-imgext ext] IN [OUT]"
+	echo "usage: $0 [-nobin] [-imgext EXT] IN [OUT]"
 	exit 1
 fi
 
