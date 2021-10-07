@@ -1,10 +1,11 @@
 py2 ?= python
 py3 ?= python3
+venv ?= virutalenv
 
 setup: env/2/bin/ocropus-dewarp env/3/bin/calamari-predict model/calamari_models-1.0/fraktur_historical/0.ckpt.json lib/align_gt_ocr.jar
 
 env/2/bin/activate:
-	virtualenv -p ${py2} env/2
+	${venv} -p ${py2} env/2
 
 # Install ocropus into the virtual environment.
 env/2/bin/ocropus-dewarp: env/2/bin/activate env/ocropy/setup.py
@@ -21,7 +22,7 @@ env/3/bin/activate:
 # Install calamari into the virtual environment.
 env/3/bin/calamari-predict: env/3/bin/activate
 	. env/3/bin/activate && pip install --upgrade pip && deactivate
-	. env/3/bin/activate && pip install 'h5py<3' 'tensorflow>=2' calamari_ocr && deactivate
+	. env/3/bin/activate && pip install calamari_ocr && deactivate
 
 # Download calamari models.
 model/calamari.zip:
