@@ -20,7 +20,7 @@ tools. This will
 General usage: `script/run.bash [-imgext ext] IN [OUT]`
 
 Run the segmentation over the data in the `IN` directory using `bash
-script/run.bash IN`.  The result will be written to the `segmented/IN`
+scripts/run.bash IN`.  The result will be written to the `segmented/IN`
 directory.  You can use the `-imgext ext` option to set the extension
 of the input images, i.e. `bash script/run.bash -imgext .sau.png IN`
 runs the segmentation over all the `.sau.png` image files.
