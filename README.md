@@ -17,6 +17,17 @@ tools. This will
  * install calamari into the `env/3` virtual environment and
  * download the calamari OCR-models into the `model` folder.
 
+## Files
+There are various scripts in the `scripts` directory:
+* `scripts/run.bash` runs the whole segmentation and alignment process
+  (ie. runs the following three scripts in the right order)
+* `scripts/segment.bash` segments the GT into regions and the regions
+  into lines using `ocropus-nlbin`
+* `scripts/predict.bash` runs the ocr-recognition (using
+  `calamari-predict` and the lines
+* `scripts/align.bash` algins the ocred lines with the ground-truth
+  lines
+
 ## Usage
 General usage: `script/run.bash [-nobin] [-imgext EXT] IN [OUT]`
 

@@ -1,18 +1,12 @@
 #!/bin/bash
 set -e
 
-if [[ $# -lt 2 ]]; then
-    echo "usage $0 DIR MODELS..."
+if [[ $# -lt 1 ]]; then
+    echo "usage $0 DIR"
     exit 1
 fi
 
-bdir=$(dirname $0)
-dir=$1; shift
-models=$@
-
-# ocr
-echo find $dir -type f -name '*.bin.png' "|" xargs calamari-predict -j 4 --checkpoint $models --files
-find $dir -type f -name '*.bin.png' | xargs calamari-predict -j 4 --checkpoint $models --files
+dir=$1
 
 # align
 echo alignes $dir/*.json
