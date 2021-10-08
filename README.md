@@ -4,9 +4,9 @@ Scripts for IMPACT ground-truth generation.
 ## Setup
 Install `go`, make sure that you have both python2 and python3 and
 java installed. Install `segregs`, `seglines` and `alignes`:
- * `go get github.com/cisocrgroup/segregs`
- * `go get github.com/finkf/seglines`
- * `go get github.com/finkf/alignes`
+ * `go install github.com/cisocrgroup/segregs@latest`
+ * `go install github.com/finkf/seglines@latest`
+ * `go install github.com/finkf/alignes@latest`
  * Add `$HOME/go/bin` to your `PATH`
  * Install python3-venv if you are on debian or ubuntu
  * Install libtk
