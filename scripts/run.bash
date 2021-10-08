@@ -49,6 +49,6 @@ $bdir/predict.bash $odir \
 deactivate
 
 # Align lines
-$bdir/align.bash
+$bdir/align.bash $odir
 # cleanup
 # $bdir/cleanup.bash $odir
