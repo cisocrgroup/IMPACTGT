@@ -18,7 +18,7 @@ while true; do
 done
 
 if [[ $# != 2 ]]; then
-    echo "usage $0 [-nobin|-imgext ext] IN OUT"
+    echo "usage $0 [-nobin|-imgext EXT] IN OUT"
     exit 1
 fi
 
