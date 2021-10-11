@@ -14,7 +14,7 @@ env/2/bin/ocropus-dewarp: env/2/bin/activate env/ocropy/setup.py
 
 # Checkout ocropus git repository.
 env/ocropy/setup.py:
-	git clone --depth 1 https://github.com/ocropus/ocropy env/ocropy
+	git clone --depth 1 -b master https://github.com/ocropus/ocropy env/ocropy
 
 env/3/bin/activate:
 	${py3} -m venv env/3
