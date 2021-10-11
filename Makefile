@@ -1,8 +1,8 @@
 py2 ?= python
 py3 ?= python3
-venv ?= virutalenv
+venv ?= virtualenv
 
-setup: env/2/bin/ocropus-dewarp env/3/bin/calamari-predict model/calamari_models-1.0/fraktur_historical/0.ckpt.json lib/align_gt_ocr.jar
+setup: env/2/bin/ocropus-dewarp env/3/bin/calamari-predict models/calamari_models-1.0/fraktur_historical/0.ckpt.json
 
 env/2/bin/activate:
 	${venv} -p ${py2} env/2
@@ -25,19 +25,11 @@ env/3/bin/calamari-predict: env/3/bin/activate
 	. env/3/bin/activate && pip install calamari_ocr && deactivate
 
 # Download calamari models.
-model/calamari.zip:
-	mkdir -p model && wget "https://github.com/Calamari-OCR/calamari_models/archive/1.0.zip" -O $@
+models/calamari.zip:
+	mkdir -p models && wget "https://github.com/Calamari-OCR/calamari_models/archive/1.0.zip" -O $@
 
 # Unpack models from calamari.zip.
-model/calamari_models-1.0/fraktur_historical/0.ckpt.json: model/calamari.zip
-	cd model && unzip calamari.zip calamari_models-1.0/fraktur_historical/*
-	cd model && unzip calamari.zip calamari_models-1.0/antiqua_historical/*
+models/calamari_models-1.0/fraktur_historical/0.ckpt.json: models/calamari.zip
+	cd models && unzip calamari.zip calamari_models-1.0/fraktur_historical/*
+	cd models && unzip calamari.zip calamari_models-1.0/antiqua_historical/*
 	touch $@
-
-# Unpack jar.
-%.jar: %.zip
-	unzip -p $^ > $@
-
-# Download jar.
-lib/align_gt_ocr.zip:
-	mkdir -p lib && cd lib && wget http://cis.lmu.de/~finkf/align_gt_ocr.zip
