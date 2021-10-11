@@ -2,12 +2,10 @@
 Scripts for IMPACT ground-truth generation.
 
 ## Setup
-Install `go`, make sure that you have both python2 and python3 and
-java installed. Install `segregs`, `seglines` and `alignes`:
- * `go install github.com/cisocrgroup/segregs@latest`
- * `go install github.com/finkf/seglines@latest`
- * `go install github.com/finkf/alignes@latest`
- * Add `$HOME/go/bin` to your `PATH`
+Install `go`, make sure that you have both python2 and python3
+installed. Install the helper-tools `impgtt`
+ * `go install git.sr.ht/~flobar/impgtt@latest`
+ * Make sure that `$HOME/go/bin` is in your `PATH`
  * Install python3-venv if you are on debian or ubuntu
  * Install libtk
 
@@ -31,8 +29,14 @@ There are various scripts in the `scripts` directory:
 ## Usage
 General usage: `script/run.bash [-nobin] [-imgext EXT] IN [OUT]`
 
-Run the segmentation over the data in the `IN` directory using `bash
-scripts/run.bash IN`.  The result will be written to the `segmented/IN`
-directory.  You can use the `-imgext EXT` option to set the extension
-of the input images, i.e. `bash script/run.bash -imgext .sau.png IN`
-runs the segmentation over all the `.sau.png` image files.
+From this repositorie's root directory run the segmentation over the
+data in the `IN` directory using `bash scripts/run.bash IN`.  The
+result will be written to the `segmented/IN` directory.  You can use
+the `-imgext EXT` option to set the extension of the input images,
+i.e. `bash script/run.bash -imgext .sau.png IN` runs the segmentation
+over all the `.sau.png` image files.
+
+Currently it is not possible to run the scripts outside of this
+repositorie's root directory. This is due to the fact that the
+`run.bash` script assumes to find `ocorpus` and `calamari` installed
+in the `env/2` and `env/3` directories.
