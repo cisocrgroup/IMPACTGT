@@ -33,3 +33,7 @@ models/calamari_models-1.0/fraktur_historical/0.ckpt.json: models/calamari.zip
 	cd models && unzip calamari.zip calamari_models-1.0/fraktur_historical/*
 	cd models && unzip calamari.zip calamari_models-1.0/antiqua_historical/*
 	touch $@
+
+clean:
+	${RM} -r env models
+.PHONY: clean
