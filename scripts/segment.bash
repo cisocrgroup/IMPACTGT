@@ -43,12 +43,12 @@ mkdir -p $odir
 for xml in $bdir/*.xml; do
     img=${xml%.xml}$imgext
     base=$(basename $img)
-    echo ln $img $odir/$base || cp $img $odir/$base
+    echo ln $img $odir/$base '||' cp $img $odir/$base
     ln $img $odir/$base || cp $img $odir/$base
-    echo ln $xml $odir/${base%$imgext}.xml || cp $xml $odir/${base%$imgext}.xml
+    echo ln $xml $odir/${base%$imgext}.xml '||' cp $xml $odir/${base%$imgext}.xml
     ln $xml $odir/${base%$imgext}.xml || cp $xml $odir/${base%$imgext}.xml
-    echo segregs -padding 10 $xml $img $odir/${base%$imgext}
-    segregs -padding 10 $xml $img $odir/${base%$imgext}
+    echo impgtt segregs --padding 10 $xml $img $odir/${base%$imgext}
+    impgtt segregs --padding 10 $xml $img $odir/${base%$imgext}
 done
 
 # Segment the regions into lines.

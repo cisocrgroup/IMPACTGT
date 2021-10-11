@@ -10,5 +10,5 @@ dir=$1; shift
 models=$@
 
 # ocr
-echo find $dir -type f -name '*.bin.png' "|" xargs calamari-predict -j 4 --checkpoint $models --files
+echo find $dir -type f -name '*.bin.png' '|' xargs calamari-predict -j 4 --checkpoint $models --files
 find $dir -type f -name '*.bin.png' | xargs calamari-predict -j 4 --checkpoint $models --files

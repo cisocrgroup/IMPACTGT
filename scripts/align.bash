@@ -9,5 +9,5 @@ fi
 dir=$1
 
 # align
-echo alignes $dir/*.json
-alignes $dir/*.json
+echo impgtt alignes $dir/*.json
+impgtt alignes $dir/*.json
