@@ -2,15 +2,16 @@ py2 ?= python
 py3 ?= python3
 venv ?= virtualenv
 
-setup: env/2/bin/ocropus-dewarp env/3/bin/calamari-predict models/calamari_models-1.0/fraktur_historical/0.ckpt.json
+setup: env/2/bin/ocropus-gpageseg env/3/bin/calamari-predict models/calamari_models-1.0/fraktur_historical/0.ckpt.json
 
 env/2/bin/activate:
 	${venv} -p ${py2} env/2
 
 # Install ocropus into the virtual environment.
-env/2/bin/ocropus-dewarp: env/2/bin/activate env/ocropy/setup.py
+env/2/bin/ocropus-gpageseg: env/2/bin/activate env/ocropy/setup.py
 	. env/2/bin/activate && pip install -r env/ocropy/requirements.txt && deactivate
 	. env/2/bin/activate && cd env/ocropy && python setup.py install && deactivate
+	patch -u $@ patches/coordinates.patch
 
 # Checkout ocropus git repository.
 env/ocropy/setup.py:

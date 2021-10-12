@@ -1,0 +1,42 @@
+--- env/2/bin/ocropus-gpageseg	2021-10-12 13:57:20.000000000 +0200
++++ env/2/xbin/ocropus-gpageseg	2021-10-12 13:59:19.047557354 +0200
+@@ -110,7 +110,7 @@
+     "Return the indices where ravel(condition) is true"
+     res, = np.nonzero(np.ravel(condition))
+     return res
+-    
++
+ def norm_max(v):
+     return v/np.amax(v)
+ 
+@@ -164,6 +164,21 @@
+     print_info("debug " + fname)
+     imsave(fname,image.astype('float'))
+ 
++######################################################
++### Output of line coordinates
++###
++### Helper functions to write the line coordinates to
++### separate files.
++######################################################
++def get_line_coordinates(linedesc,pad):
++    y0,x0,y1,x1 = [int(x) for x in [linedesc.bounds[0].start,linedesc.bounds[1].start, \
++                                    linedesc.bounds[0].stop,linedesc.bounds[1].stop]]
++    return (x0-pad,y0-pad,x1+pad,y1+pad)
++
++def write_line_coordinates(name,coords):
++    with open(name,'w') as f:
++        x0,y0,x1,y1 = coords
++        f.write("%d,%d %d,%d\n"%(x0,y0,x1,y1))
+ 
+ ################################################################
+ ### Column finding.
+@@ -459,6 +474,8 @@
+     for i,l in enumerate(lines):
+         binline = psegutils.extract_masked(1-cleaned,l,pad=args.pad,expand=args.expand)
+         ocrolib.write_image_binary("%s/01%04x.bin.png"%(outputdir,i+1),binline)
++        linecoords = get_line_coordinates(l,args.pad)
++        write_line_coordinates("%s/01%04x.rect.txt"%(outputdir,i+1),linecoords)
+         if args.gray:
+             grayline = psegutils.extract_masked(gray,l,pad=args.pad,expand=args.expand)
+             ocrolib.write_image_gray("%s/01%04x.nrm.png"%(outputdir,i+1),grayline)
