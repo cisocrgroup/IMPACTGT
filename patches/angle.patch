@@ -1,0 +1,26 @@
+--- env/2/bin/ocropus-nlbin	2021-10-12 15:45:00.000000000 +0200
++++ env/2/xbin/ocropus-nlbin	2021-10-12 15:50:38.495752026 +0200
+@@ -58,6 +58,10 @@
+     print("ERROR: ", *objs, file=sys.stderr)
+ 
+ 
++def write_skew_angle(name,angle):
++    with open(name,'w') as f:
++        f.write("%f\n"%angle)
++
+ def check_page(image):
+     if len(image.shape)==3: return "input image is color image %s"%(image.shape,)
+     if np.mean(image)<np.median(image): return "image may be inverted"
+@@ -235,10 +239,12 @@
+         if args.rawcopy: ocrolib.write_image_gray(args.output+"/%04d.raw.png"%i,raw)
+         ocrolib.write_image_binary(args.output+"/%04d.bin.png"%i,bin)
+         ocrolib.write_image_gray(args.output+"/%04d.nrm.png"%i,flat)
++        write_skew_angle(args.output+"/%04d.angle.txt"%i,angle)
+     else:
+         base,_ = ocrolib.allsplitext(fname)
+         ocrolib.write_image_binary(base+".bin.png",bin)
+         ocrolib.write_image_gray(base+".nrm.png",flat)
++        write_skew_angle(base+".angle.txt",angle)
+ 
+ if args.debug>0 or args.show>0: args.parallel = 0
+ 

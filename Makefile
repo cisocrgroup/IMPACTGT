@@ -12,6 +12,7 @@ env/2/bin/ocropus-gpageseg: env/2/bin/activate env/ocropy/setup.py
 	. env/2/bin/activate && pip install -r env/ocropy/requirements.txt && deactivate
 	. env/2/bin/activate && cd env/ocropy && python setup.py install && deactivate
 	patch -u $@ patches/coordinates.patch
+	patch -u env/2/bin/ocropus-nlbin patches/angle.patch
 
 # Checkout ocropus git repository.
 env/ocropy/setup.py:
