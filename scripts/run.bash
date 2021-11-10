@@ -21,7 +21,7 @@ done
 
 if [[ $# == 1 ]]; then
     idir=$1
-    odir=segmented/$idir
+    odir=segmented/$(basename $idir)
 elif [[ $# == 2 ]]; then
      idir=$1
      odir=$2
