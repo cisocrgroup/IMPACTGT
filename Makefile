@@ -1,8 +1,12 @@
+impgtt ?= ${HOME}/go/bin/impgtt
 py2 ?= python
 py3 ?= python3
 venv ?= virtualenv
 
-setup: env/2/bin/ocropus-gpageseg env/3/bin/calamari-predict models/calamari_models-1.0/fraktur_historical/0.ckpt.json
+setup: env/2/bin/ocropus-gpageseg env/3/bin/calamari-predict models/calamari_models-1.0/fraktur_historical/0.ckpt.json ${impgtt}
+
+${impgtt}:
+	go install git.sr.ht/~flobar/impgtt@latest
 
 env/2/bin/activate:
 	${venv} -p ${py2} env/2

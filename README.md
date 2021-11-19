@@ -3,17 +3,21 @@ Scripts for IMPACT ground-truth generation.
 
 ## Setup
 Install `go`, make sure that you have both python2 and python3
-installed. Install the helper-tools `impgtt`
- * `go install git.sr.ht/~flobar/impgtt@latest`
+installed.
  * Make sure that `$HOME/go/bin` is in your `PATH`
  * Install python3-venv if you are on debian or ubuntu
  * Install libtk
 
 Use `make setup py2=my-python2 py3=my-python3` to setup the
 tools. This will
+ * install the `impgtt` helper tools to `$HOME/go/bin`,
  * install ocropus into the `env/2` virtual environment,
  * install calamari into the `env/3` virtual environment and
  * download the calamari OCR-models into the `model` folder.
+
+If impgtt is for any reason not installed at its default location
+`$HOME/go/bin` you can set it: `make setup impgtt=/path/to/impgtt
+py2=my-python2 py3=my-python3`.
 
 ## Files
 There are various scripts in the `scripts` directory:
