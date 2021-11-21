@@ -1,6 +1,5 @@
 env/*
 models/*
-lib/*
 segmented/*
 gtfiles/*
 data/*
