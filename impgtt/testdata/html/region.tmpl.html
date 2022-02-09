@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Region {{.Region.Dir}}</title>
+    <style>
+      .header {
+          background-color: white;
+          position: sticky;
+          top: 0px;
+          padding: 10px 0px;
+      }
+      .region {
+	  visibility: hidden;
+      }
+    </style>
+    <script>
+      function toggleRegion() {
+	  let r = document.getElementById("region");
+	  if (document.getElementById("rcheck").checked) {
+	      r.style.visibility = "visible";
+	  } else {
+	      r.style.visibility = "hidden";
+	  }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="header" id="header">
+      <h2>{{.Dir}}</h2>
+      <h3>Region {{.Region.Dir}} ({{.Region.Attrs.type}})</h3>
+      <ul>
+        <li>Region index: {{.Region.Index}}</li>
+        <li>Region {{.Index}} of {{.NRegions}}</li>
+        <li>Number of lines: {{len .Region.Snippets}}</li>
+        <li>Waste: {{len .Region.Waste}} lines</li>
+      </ul>
+      <p>
+	<li>
+	  <input type="checkbox" id="rcheck" name="rcheck" value="" onclick="toggleRegion()">
+	  <label for="rcheck">Show region</label>
+	</li>
+      </p>
+      <p>
+        <a href="/region?index={{.Prev}}">Previous region</a>
+        <a href="/region?index={{.Next}}">Next region</a>
+      </p>
+    </div>
+
+    <div class="snippets" id="snippets">
+      <h3>Snippets</h3>
+      {{range .Region.Snippets}}
+      <p>
+        {{.BaseName}}<br/>
+        <img src="{{.Image}}"/><br/>
+        {{normalize .GT}}
+      </p>
+      {{end}}
+    </div>
+
+    <div class="region" id="region">
+      <h3>Region</h3>
+      <img src="{{.Region.Image}}"/><br/>
+      {{range split .Region.Text}}
+      {{normalize .}}<br/>
+      {{end}}
+    </div>
+  </body>
+</html>
